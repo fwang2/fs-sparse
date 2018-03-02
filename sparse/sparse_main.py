@@ -42,9 +42,14 @@ def get_extents(path):
     extents = []
     while True:
         beg = lib.lseek(fd, offset, lib.SEEK_DATA)
-        end = lib.lseek(fd, beg, lib.SEEK_HOLE)
-        if beg == -1 or end == -1:
-            error(path)
+        if beg == -1:
+            # there is a corner case of zero byte file
+            # in this case, there is no valid extent we
+            # can return, just []
+            end = lib.lseek(fd, 0, lib.SEEK_HOLE)
+            if end == 0: break
+        else:
+            end = lib.lseek(fd, beg, lib.SEEK_HOLE)
         extents.append((beg, end))
         if end >= fsize:
             break
