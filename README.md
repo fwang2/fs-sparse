@@ -1,4 +1,4 @@
-# pysparse: a wrapper to check sparse file
+# fs-sparse: a wrapper to check sparse file
 
 
 ## Generate test files
