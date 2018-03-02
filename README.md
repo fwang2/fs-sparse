@@ -1,16 +1,19 @@
 # pysparse: a wrapper to check sparse file
 
 
-## Generate a test file
+## Generate test files
 
-Using scripts provided in `test/create_test_file.sh`, it will generate a
-`normal.dat' with no holes; `sparse.dat` with holes.
+Using scripts provided in `test/create_test_file.sh`, it will generate two
+files:
+
+* `normal.dat` with no holes;
+* `sparse.dat` with holes.
 
 
 ## Usage
 
-The interface exposes three functions, see example below:
-
+The interface exposes three functions, see example below. Note that if a file
+has no holes, the # of extents (or tuple) will be 1.
 
     In [1]: import sparse
 
@@ -24,6 +27,6 @@ The interface exposes three functions, see example below:
     Out[4]: False
 
 
-please open issues for bug fix or feature requests.
+Please open issues for bug fix or feature requests.
 
 
